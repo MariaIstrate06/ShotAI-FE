@@ -1,21 +1,35 @@
-import { Routes, Route, BrowserRouter, Switch } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 // import React, { useState } from 'react';
-import Home from "./components/Home"
-import Team from "./components/Team"
-import Login from "./components/Login"
+import AddMatch from "./pages/addMatch/AddMatch"
+import ChangePassword from "./pages/changePassword/ChangePassword"
+import EmailValidation from "./pages/emailValidation/EmailValidation"
+import Home from "./pages/home/Home"
+import Login from "./pages/login/Login"
+import Matches from "./pages/matches/Matches"
+import MatchStatistics from "./pages/matchStatistics/MatchStatistics"
+import Player from "./pages/player/Player"
+import Reports from "./pages/reports/Reports"
+import SignUp from "./pages/signup/SignUp"
+import Team from "./pages/team/Team"
+import TeamStats from "./pages/teamStats/TeamStats"
 
 
 function App() {
-  // const [token, setToken] = useState();
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={ <Home/> } />
-        <Route path="team" element={ <Team/> } />
+        <Route path="add-match" element={ <AddMatch/> } />
+        <Route path="change-password" element={ <ChangePassword/> } />
+        <Route path="email-validation" element={ <EmailValidation/> } />
         <Route path="login" element={ <Login/> } />
+        <Route path="matches" element={ <Matches/> } />
+        <Route path="matches-statistics" element={ <MatchStatistics/> } />
+        <Route path="player" element={ <Player/> } />
+        <Route path="reports" element={ <Reports/> } />
+        <Route path="signup" element={ <SignUp/> } />
+        <Route path="team" element={ <Team/> } />
+        <Route path="team-stats" element={ <TeamStats/> } />
 
       </Routes>
     </div>
