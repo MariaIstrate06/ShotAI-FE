@@ -32,7 +32,7 @@ img{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 30%;
+    width: 40%;
 
 }
 .login-header{
@@ -41,12 +41,12 @@ img{
     flex-direction: column;
 }
 .login-form{
-    width: 100%;
+    width: 90%;
 }
 .login-footer{
-    width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-right: -2.2em;
 }
 .form-control{
     color: var(--light-lila);
@@ -58,6 +58,9 @@ img{
     border-color: transparent;
     padding: 0.5em;
 }
+input{
+    padding-left: 3em !important;
+}
 .form-control:focus-visible{
     border-color: transparent;
 }
@@ -66,7 +69,9 @@ img{
     padding: 0.7em;
     width: 8em;
     color: white;
-    font-weight: 900;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 1em;
     border-radius: 0.3em;
     border-color: transparent;
     margin-top: 0.3em;
@@ -79,7 +84,7 @@ hr{
     background-color: var(--main-blue);
 }
 .other-section{
-    width: 30%;
+    width: 40%;
 }
 .options{
     display: flex;
@@ -90,4 +95,28 @@ hr{
 }
 a{
     text-decoration: none;
+}
+.icon{
+    position: absolute;
+    box-sizing:border-box;
+    color: var(--light-lila);
+    top: 55%;
+    left: 0.9em;
+    transform: translateY(-50%);
+}
+.input-group{
+    position: relative;
+}
+.login-title{
+    font-size: 1.5em;
+    font-weight: 700;
+    padding-bottom: 1em;
+    color: var(--dark-lila);
+
+}
+.login-description{
+    font-size: 0.9em;
+    font-weight: 500;
+    padding-bottom: 0.7em;
+    color: var(--dark-lila);
 }

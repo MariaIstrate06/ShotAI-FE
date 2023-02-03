@@ -102,8 +102,8 @@ class Login extends Component {
         <div className="login-container">
           <div className="login-centered">
             <div className="login-header">
-              <h2>Login</h2>
-              <h5>Please fill your information below.</h5>
+              <div className="login-title">Login</div>
+              <div className="login-description">Please fill your information below.</div>
             </div>
             <div className="login-form">
               <Form
@@ -112,25 +112,30 @@ class Login extends Component {
                   this.form = c;
                 }}
               >
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.onChangeUsername}
-                  validations={[required]}
-                  placeholder="E-mail"
-                />
-                <Input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.onChangePassword}
-                  validations={[required]}
-                  placeholder="Password"
-
-                />
+                <div className="input-group">
+                  <i className="fas fa-user icon" />
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.onChangeUsername}
+                    validations={[required]}
+                    placeholder="E-mail"
+                  />
+                </div>
+                <div className="input-group">
+                  <i className="fas fa-user icon" />
+                  <Input
+                    type="password"
+                    className="form-control"
+                    name="username"
+                    value={this.state.password}
+                    onChange={this.onChangePassword}
+                    validations={[required]}
+                    placeholder="Password"
+                  />
+                </div>
                 <div className="login-footer">
                   <div className="form-group">
                     <button

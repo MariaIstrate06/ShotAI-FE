@@ -1,0 +1,26 @@
+.nav{
+    background-color: var(--main-blue);
+    padding-left: 3em;
+    padding-right: 3em;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    padding: 1em;
+    color: white;
+}
+.right-side{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.left-side{
+    display: flex;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+.nav-icon{
+    color: white;
+    padding: 0.5em
+}

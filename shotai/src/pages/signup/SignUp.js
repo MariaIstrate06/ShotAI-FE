@@ -143,7 +143,7 @@ class SignUp extends Component {
                 <div className="login-container">
                     <div className="login-centered">
                         <div className="login-header">
-                            <h2>Login</h2>
+                            <h2>Sign up</h2>
                             <h5>Please fill your information below.</h5>
                         </div>
                         <div className="login-form">
@@ -155,49 +155,63 @@ class SignUp extends Component {
                             >
                                 {!this.state.successful && (
                                     <div>
-                                        <Input
-                                            type="text"
-                                            className="form-control"
-                                            name="username"
-                                            value={this.state.username}
-                                            onChange={this.onChangeUsername}
-                                            validations={[required, vusername]}
-                                            placeholder="Name"
-                                        />
-                                        <Input
-                                            type="text"
-                                            className="form-control"
-                                            name="email"
-                                            value={this.state.email}
-                                            onChange={this.onChangeEmail}
-                                            validations={[required, email]}
-                                            placeholder="E-mail"
-
-                                        />
-                                        <Input
-                                            type="password"
-                                            className="form-control"
-                                            name="password"
-                                            value={this.state.password}
-                                            onChange={this.onChangePassword}
-                                            validations={[required, vpassword]}
-                                            placeholder="Password"
-
-                                        />
-                                        <Input
-                                            type="password"
-                                            className="form-control"
-                                            name="password"
-                                            value={this.state.password}
-                                            onChange={this.onChangePassword}
-                                            validations={[required, vpassword]}
-                                            placeholder="Confirm password"
-
-                                        />
-
-                                        <div className="form-group">
-                                            <button className="next-button">Sign Up</button>
+                                        <div className="input-group">
+                                            <i className="fas fa-user icon" />
+                                            <Input
+                                                type="text"
+                                                className="form-control"
+                                                name="username"
+                                                value={this.state.username}
+                                                onChange={this.onChangeUsername}
+                                                validations={[required, vusername]}
+                                                placeholder="Name"
+                                            />
                                         </div>
+                                        <div className="input-group">
+                                            <i className="fas fa-envelope icon" />
+                                            <Input
+                                                type="text"
+                                                className="form-control"
+                                                name="email"
+                                                value={this.state.email}
+                                                onChange={this.onChangeEmail}
+                                                validations={[required, email]}
+                                                placeholder="E-mail"
+
+                                            />
+                                        </div>
+                                        <div className="input-group">
+                                            <i className="fas fa-lock icon" />
+                                            <Input
+                                                type="password"
+                                                className="form-control"
+                                                name="password"
+                                                value={this.state.password}
+                                                onChange={this.onChangePassword}
+                                                validations={[required, vpassword]}
+                                                placeholder="Password"
+
+                                            />
+                                        </div>
+                                        <div className="input-group">
+                                            <i className="fas fa-lock icon" />
+                                            <Input
+                                                type="password"
+                                                className="form-control"
+                                                name="password"
+                                                value={this.state.password}
+                                                onChange={this.onChangePassword}
+                                                validations={[required, vpassword]}
+                                                placeholder="Confirm password"
+
+                                            />
+                                        </div>
+                                        <div className="login-footer">
+                                            <div className="form-group">
+                                                <button className="next-button">Next</button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 )}
 

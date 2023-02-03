@@ -15,11 +15,13 @@ import Team from "./pages/team/Team"
 import TeamStats from "./pages/teamStats/TeamStats"
 import Profile from "./pages/profile/Profile"
 import React from "react"
-
+import ForgotPassword from "./pages/forgotPassword/ForgotPassword"
+import NavBar from "./components/Navbar"
 
 function App() {
   return (
     <div className="App">
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -35,7 +37,7 @@ function App() {
         <Route path="signup" element={<SignUp />} />
         <Route path="team" element={<Team />} />
         <Route path="team-stats" element={<TeamStats />} />
-
+        <Route path="forgot-password" element={<ForgotPassword />} />
       </Routes>
     </div>
   )
