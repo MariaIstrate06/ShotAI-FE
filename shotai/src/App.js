@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom"
-// import React, { useState } from 'react';
+import "./App.css"
+import './variables.css'
 import AddMatch from "./pages/addMatch/AddMatch"
 import ChangePassword from "./pages/changePassword/ChangePassword"
 import EmailValidation from "./pages/emailValidation/EmailValidation"
@@ -12,24 +13,28 @@ import Reports from "./pages/reports/Reports"
 import SignUp from "./pages/signup/SignUp"
 import Team from "./pages/team/Team"
 import TeamStats from "./pages/teamStats/TeamStats"
+import Profile from "./pages/profile/Profile"
+import React from "react"
 
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={ <Home/> } />
-        <Route path="add-match" element={ <AddMatch/> } />
-        <Route path="change-password" element={ <ChangePassword/> } />
-        <Route path="email-validation" element={ <EmailValidation/> } />
-        <Route path="login" element={ <Login/> } />
-        <Route path="matches" element={ <Matches/> } />
-        <Route path="matches-statistics" element={ <MatchStatistics/> } />
-        <Route path="player" element={ <Player/> } />
-        <Route path="reports" element={ <Reports/> } />
-        <Route path="signup" element={ <SignUp/> } />
-        <Route path="team" element={ <Team/> } />
-        <Route path="team-stats" element={ <TeamStats/> } />
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="add-match" element={<AddMatch />} />
+        <Route path="change-password" element={<ChangePassword />} />
+        <Route path="email-validation" element={<EmailValidation />} />
+        <Route path="login" element={<Login />} />
+        <Route path="matches" element={<Matches />} />
+        <Route path="matches-statistics" element={<MatchStatistics />} />
+        <Route path="player" element={<Player />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="team" element={<Team />} />
+        <Route path="team-stats" element={<TeamStats />} />
 
       </Routes>
     </div>

@@ -1,0 +1,93 @@
+/*
+blue: #007DFA
+*/
+body, html{
+    height: 100%;
+}
+.page-container{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    overflow-y: hidden;
+
+}
+.picture-container{
+    height: 100%;
+    width: 100%;
+}
+img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: fill;
+}
+.login-container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.login-centered{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+
+}
+.login-header{
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+}
+.login-form{
+    width: 100%;
+}
+.login-footer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.form-control{
+    color: var(--light-lila);
+    width: 95%;
+    background-color: var(--light-gray);
+    border-radius: 0.5em;
+    height: 2.5em;
+    margin-top: 0.6em;
+    border-color: transparent;
+    padding: 0.5em;
+}
+.form-control:focus-visible{
+    border-color: transparent;
+}
+.next-button{
+    background-color: var(--main-blue);
+    padding: 0.7em;
+    width: 8em;
+    color: white;
+    font-weight: 900;
+    border-radius: 0.3em;
+    border-color: transparent;
+    margin-top: 0.3em;
+
+}
+hr{
+    width: 100%;
+    /* border-width: 10; */
+    color:var(--main-blue);
+    background-color: var(--main-blue);
+}
+.other-section{
+    width: 30%;
+}
+.options{
+    display: flex;
+    flex-direction: row;
+    font-size: 0.9em;
+    text-decoration: none;
+    justify-content: space-between;
+}
+a{
+    text-decoration: none;
+}
