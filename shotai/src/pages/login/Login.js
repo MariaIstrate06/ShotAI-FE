@@ -37,7 +37,7 @@ class Login extends Component {
     this.onChangePassword = this.onChangePassword.bind(this);
 
     this.state = {
-      username: "",
+      email: "",
       password: "",
       loading: false,
       message: "",
@@ -46,7 +46,7 @@ class Login extends Component {
 
   onChangeUsername(e) {
     this.setState({
-      username: e.target.value,
+      email: e.target.value,
     });
   }
 
@@ -67,7 +67,8 @@ class Login extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(this.state.username, this.state.password).then(
+      console.log(this.state)
+      AuthService.login(this.state.email, this.state.password).then(
         () => {
           this.props.router.navigate("/player");
           window.location.reload();
@@ -117,8 +118,8 @@ class Login extends Component {
                   <Input
                     type="text"
                     className="form-control"
-                    name="username"
-                    value={this.state.username}
+                    name="email"
+                    value={this.state.email}
                     onChange={this.onChangeUsername}
                     validations={[required]}
                     placeholder="E-mail"
@@ -129,7 +130,7 @@ class Login extends Component {
                   <Input
                     type="password"
                     className="form-control"
-                    name="username"
+                    name="email"
                     value={this.state.password}
                     onChange={this.onChangePassword}
                     validations={[required]}

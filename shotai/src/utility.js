@@ -1,4 +1,4 @@
-export const ROOT = "http://localhost/api"
+export const ROOT = "http://localhost:8080/api"
 
 export const PLAYER_POSITIONS = [
     { value: 'GK', label: 'Goalkeeper' },
