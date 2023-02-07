@@ -13,7 +13,9 @@ const NavBar = () => {
     return (
         <div className="nav">
             <div className="left-side">
-                <img src={logo} alt="logo"></img>
+                <Link to="/home">
+                    <img src={logo} alt="logo"></img>
+                </Link>
             </div>
             <div className="right-side">
                 <div className="nav-elem">

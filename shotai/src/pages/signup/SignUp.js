@@ -242,11 +242,13 @@ class SignUp extends Component {
                     <div className="other-section">
                         <hr></hr>
                         <div className="options">
-                            <Link to="/profile">
-                                <p>Already have an account?</p>
-                            </Link>
+                            <div className="suggestion">
+                                Already have an account?
+                            </div>
                             <Link to="/login">
-                                <p>Login to your account</p>
+                                <div className="suggestion blue">
+                                    Login to your account
+                                </div>
                             </Link>
 
                         </div>

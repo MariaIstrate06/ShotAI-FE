@@ -5,7 +5,6 @@ import CheckButton from "react-validation/build/button";
 import "./Login.css"
 import AuthService from "../../services/auth.service";
 import image from "../../media/img.svg"
-
 import { withRouter } from "../../common/with-router";
 import { Link } from "react-router-dom";
 
@@ -70,7 +69,7 @@ class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
         () => {
-          this.props.router.navigate("/profile");
+          this.props.router.navigate("/player");
           window.location.reload();
         },
         (error) => {
@@ -85,6 +84,7 @@ class Login extends Component {
             loading: false,
             message: resMessage,
           });
+          alert(`⚠Error!⚠: ${this.state.message}`)
         }
       );
     } else {
@@ -148,14 +148,6 @@ class Login extends Component {
                       <span>Next</span>
                     </button>
                   </div>
-
-                  {this.state.message && (
-                    <div className="form-group">
-                      <div className="alert alert-danger" role="alert">
-                        {this.state.message}
-                      </div>
-                    </div>
-                  )}
                   <CheckButton
                     style={{ display: "none" }}
                     ref={(c) => {
@@ -169,11 +161,15 @@ class Login extends Component {
           <div className="other-section">
             <hr></hr>
             <div className="options">
-              <Link to="/profile">
-                <p>Already have an account?</p>
+              <Link to="/signup">
+                <div className="suggestion">
+                  Don't have an account?
+                </div>
               </Link>
               <Link to="/forgot-password">
-                <p>Forgot password?</p>
+                <div className="suggestion blue">
+                  Forgot password?
+                </div>
               </Link>
 
             </div>
