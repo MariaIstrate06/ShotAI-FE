@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { PLAYER_POSITIONS } from "utility";
 
 const Modal = ({ onClose, onAdd }) => {
-    const [playerName, setPlayerName] = useState("");
-    const [playerEmail, setPlayerEmail] = useState("");
-    const [playerNumber, setPlayerNumber] = useState("");
-    const [playerPhotoUrl, setPlayerPhotoUrl] = useState("");
-    const [playerRole, setPlayerRole] = useState("");
-
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [jerseyNumber, setJerseyNumber] = useState("");
+    const [position, setPosition] = useState("");
+    const [playerPicture, setPlayerPicture] = useState("");
+    const userId = JSON.parse(localStorage.getItem("user")).id;
     const handleSubmit = event => {
         event.preventDefault();
-        onAdd({ playerName, playerEmail, playerNumber, playerPhotoUrl, playerRole });
+        onAdd({ name, email, jerseyNumber, position, playerPicture, userId });
         onClose();
     };
 
@@ -20,30 +20,30 @@ const Modal = ({ onClose, onAdd }) => {
                 <input
                     type="text"
                     placeholder="Player's name"
-                    value={playerName}
-                    onChange={event => setPlayerName(event.target.value)}
+                    value={name}
+                    onChange={event => setName(event.target.value)}
                 />
                 <input
                     type="text"
                     placeholder="Player's Number"
-                    value={playerNumber}
-                    onChange={event => setPlayerNumber(event.target.value)}
+                    value={jerseyNumber}
+                    onChange={event => setJerseyNumber(event.target.value)}
                 />
                 <input
                     type="text"
                     placeholder="Player's Email"
-                    value={playerEmail}
-                    onChange={event => setPlayerEmail(event.target.value)}
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
                 />
                 <input
                     type="text"
                     placeholder="Player's Photo Url"
-                    value={playerPhotoUrl}
-                    onChange={event => setPlayerPhotoUrl(event.target.value)}
+                    value={playerPicture}
+                    onChange={event => setPlayerPicture(event.target.value)}
                 />
                 <select
-                    value={playerRole}
-                    onChange={event => setPlayerRole(event.target.value)}
+                    value={position}
+                    onChange={event => setPosition(event.target.value)}
                 >
                     {PLAYER_POSITIONS.map(role => (
                         <option key={role.value} value={role.value}>

@@ -67,10 +67,10 @@ class Login extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      console.log(this.state)
       AuthService.login(this.state.email, this.state.password).then(
         () => {
-          this.props.router.navigate("/player");
+          this.props.router.navigate("/team");
+          console.log("Logged in.")
           window.location.reload();
         },
         (error) => {

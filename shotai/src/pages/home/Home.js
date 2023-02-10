@@ -1,45 +1,22 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import UserService from "../../services/user.service";
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
+const Home = () => {
 
-    this.state = {
-      content: ""
-    };
-  }
+  console.log(localStorage.getItem("user"));
 
-  componentDidMount() {
-    UserService.getPublicContent().then(
-      response => {
-        this.setState({
-          content: response.data
-        });
-      },
-      error => {
-        this.setState({
-          content:
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        });
-      }
-    );
-  }
+  return (
+    <div className="container">
+      <header className="jumbotron">
+        <h3>{JSON.parse(localStorage.getItem("user"))}</h3>
+      </header>
+      <Link to="/login">
+        <button>LOGIN</button>
+      </Link>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div className="container">
-        <header className="jumbotron">
-          <h3>{this.state.content}</h3>
-        </header>
-        <Link to="/login">
-          <button> LOGIN </button>
-        </Link>
-      </div>
-    );
-  }
-}
+export default Home;

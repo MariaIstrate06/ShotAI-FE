@@ -1,68 +1,106 @@
 .team-container {
-  display: grid;
-  grid-template-columns: 33.3% 33.3% 33.3%
+    display: grid;
+    grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);
 }
 
 .team-card {
-  width: 80%;
-  height: 100%;
-  text-align: center;
+    text-align: center;
 }
 
 .team-card img {
-  width: 100%;
-  height: 80%;
-  object-fit: cover;
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 1em;
 }
 
 .add-player-button {
-  width: 30%;
-  height: 200px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-  cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center !important;
+    width: 65%;
+    height: 95%;
+    border-radius: 1em;
+    border-color: transparent;
+    cursor: pointer;
+    background-color: var(--main-blue);
+    color: white;
+    font-weight: 600;
+    justify-content: center;
+    filter: drop-shadow(0em 1em 20px #727272);
+
 }
 
-.player-name{
-    
+.add-player-plus {
+    position: absolute;
+    width: 6em;
+    top: 30%;
+    height: 6em;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: transparent;
+    z-index: 10;
 }
-.player-role{
 
+.plus {
+    color: var(--main-blue);
+    font-size: 5em;
+}
+
+.player-name {
+    font-size: 2em;
+    color: var(--dark-gray)
+}
+
+.player-role {
+    font-size: 1em;
+    color: var(--main-blue)
 }
 
 .modal-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-container form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .modal-container input[type="text"],
 .modal-container select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
 }
 
 .modal-container button[type="submit"] {
-  padding: 10px 20px;
-  background-color: lightgray;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    padding: 10px 20px;
+    background-color: lightgray;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1em;
 }

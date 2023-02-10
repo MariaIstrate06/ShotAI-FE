@@ -1,110 +1,119 @@
 import React, { useEffect, useState } from "react";
-import "./Team.css"
-import TeamCard from "../../components/PlayerCard"
+import "./Team.css";
+import TeamCard from "../../components/PlayerCard";
 import Modal from "../../components/Modal";
-import axios from 'axios';
-import { ROOT } from "../../utility.js"
+import axios from "axios";
+import { ROOT, mockPlayer, mockPlayers } from "../../utility.js";
 
 
-const requesterId = 1;
+
 const Team = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const requesterId = user.id;
+  let userRole = 1;
+  const [players, setPlayers] = useState(mockPlayers.players);
+  const [showModal, setShowModal] = useState(false);
+  if (user.roles.includes("ROLE_COACH")) {
+    userRole = 1 // 1 DACA E COACH 2 DACA E PLAYER
+  }
+  else {
+    userRole = 2;
+  }
+  const openModal = () => {
+    setShowModal(true);
+  };
 
-    // mock
-    const mockPlayers = [
-        { id: 1, playerName: "John Doe1", playerPhotoUrl: "Goal", playerRole: "Goalkeeper" },
-        { id: 2, playerName: "John Doe1", playerPhotoUrl: "Goal", playerRole: "Goalkeeper" },
-        { id: 3, playerName: "Jane Doe2", playerPhotoUrl: "Goal", playerRole: "Attack" },
-        { id: 4, playerName: "John Doe3", playerPhotoUrl: "Goal", playerRole: "Goalkeeper" },
-        { id: 5, playerName: "Jane Doe4", playerPhotoUrl: "Goal", playerRole: "Attack" },
-        { id: 6, playerName: "John Doe5", playerPhotoUrl: "Goal", playerRole: "Goalkeeper" },
-        { id: 7, playerName: "Jane Doe6", playerPhotoUrl: "Goal", playerRole: "Attack" },
-        { id: 8, playerName: "John Doe7", playerPhotoUrl: "Goal", playerRole: "Goalkeeper" },
-        { id: 9, playerName: "Jane Doe8", playerPhotoUrl: "Goal", playerRole: "Attack" },
-        { id: 10, playerName: "John Doe9", playerPhotoUrl: "Goal", playerRole: "Goalkeeper" },
-        { id: 11, playerName: "Jane Doe10", playerPhotoUrl: "Goal", playerRole: "Attack" },
-        { id: 12, playerName: "John Doe11", playerPhotoUrl: "Goal", playerRole: "Goalkeeper" },
-        { id: 13, playerName: "Jane Doe12", playerPhotoUrl: "Goal", playerRole: "Attack" }
 
-    ]
-    const [players, setPlayers] = useState(mockPlayers);
-    const [showModal, setShowModal] = useState(false);
-    const openModal = () => {
-        setShowModal(true);
-    };
-
-    // ADD PLAYER: POST: api/team/invite
-    const handleAddPlayer = player => {
-        setPlayers([...players, player]); // asta doar pe fe, delete this line after api works
-
-        // aici facem request sa bagam playerul si-n bd
-        axios.post(`${ROOT}/team/invite`, player)
-            .then(response => {
-                console.log(response.data.message);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-    };
-
-    // GET TEAM: GET: api/team
-    const getTeam = async (requesterId) => {
-        try {
-            const response = await axios.get(`${ROOT}/team?id=${requesterId}`);
-            setPlayers(response.data);
-        } catch (error) {
-            console.error(error);
-            setPlayers(mockPlayers) // COMMENT THIS LINE WHEN API WORKS
+  // ADD PLAYER: POST: api/team/invite
+  const handleAddPlayer = (player) => {
+    axios
+      .post(`${ROOT}/team/invite`, player, {
+        headers: {
+          Authorization: `Bearer ${user.token}`
         }
-    };
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((error) => {
+        console.log("player: ", player)
+        console.error(error);
+      });
+  };
 
-    useEffect(() => {
-        getTeam(requesterId);
-    },);
+  // GET TEAM: GET: api/team
+  const getTeam = async (requesterId) => {
+    try {
+      const response = await axios.get(`${ROOT}/team?id=${requesterId}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      });
+      console.log("rasp: ", response.data.players)
+      setPlayers(response.data.players);
+      if (userRole === 1) {
+        setPlayers([mockPlayer, ...response.data.players]);
+      }
+    } catch (error) {
+      console.error(error);
+      setPlayers([mockPlayer, ...players]); // AICI BAGA UN IF DACA E COACH, DACA NU LASA ASA
+    }
+  };
 
-    // DELETE PLAYER: DELETE: api/team/playerId
-    const deletePlayer = (id) => {
-        //doar pt front teoretic - delete this line when api works
-        setPlayers(players.filter((player) => player.id !== id));
-        //pt back: 
-        axios.delete(`api/team/${id}`)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    };
+  useEffect(() => {
+    getTeam(requesterId);
+  }, []);
+
+  // DELETE PLAYER: DELETE: api/team/playerId
+  const deletePlayer = (id) => {
+    axios
+      .delete(`${ROOT}/team/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
 
-    return (
-        <>
-            <div className="team-container">
-                {players.map((player, index) => (
-                    index === 0 ? (
-                        <button className="add-player-button" onClick={openModal}>
-                            Add Player
-                        </button>
-                    ) : (
-
-                        <TeamCard
-                            key={index}
-                            id={player.id}
-                            playerName={player.playerName}
-                            image={player.playerPhotoUrl}
-                            playerRole={player.playerRole}
-                            onDelete={deletePlayer}
-                        />
-                    )
-                ))}
-
+  return (
+    <>
+      <div className="team-container">
+        {players.map((player, index) =>
+          index === 0 && userRole === 1 ? ( // de adaugat: index === 0 && user.role === "COACH"
+            <div className="card-container">
+              <button className="add-player-plus" onClick={openModal}>
+                <div className="plus"> + </div>
+              </button>
+              <div className="add-player-button" onClick={openModal}>
+                Add Player
+              </div>
             </div>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)} onAdd={handleAddPlayer} />
-            )}
-        </>
-    )
+          ) : (
+            <div className="card-container">
+              <TeamCard
+                key={index}
+                id={player.id}
+                playerName={player.name}
+                playerNumber={player.jerseyNumber}
+                image={"Goal"}
+                playerRole={player.position}
+                onDelete={deletePlayer}
+              />
+            </div>
+          )
+        )}
+      </div>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)} onAdd={handleAddPlayer} />
+      )}
+    </>
+  );
 };
 
 export default Team;

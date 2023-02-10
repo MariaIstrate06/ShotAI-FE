@@ -22,23 +22,26 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="add-match" element={<AddMatch />} />
-        <Route path="change-password" element={<ChangePassword />} />
-        <Route path="email-validation" element={<EmailValidation />} />
-        <Route path="login" element={<Login />} />
-        <Route path="matches" element={<Matches />} />
-        <Route path="matches-statistics" element={<MatchStatistics />} />
-        <Route path="player/:playerId" element={<Player />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="reports" element={<Reports />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="team" element={<Team />} />
-        <Route path="team-stats" element={<TeamStats />} />
-        <Route path="forgot-password" element={<ForgotPassword />} />
-      </Routes>
+      <div className="app-main-page">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="add-match" element={<AddMatch />} />
+          <Route path="change-password" element={<ChangePassword />} />
+          <Route path="/api/auth/signup/:id" element={<EmailValidation />} />
+          <Route path="login" element={<Login />} />
+          <Route path="matches" element={<Matches />} />
+          <Route path="matches-statistics" element={<MatchStatistics />} />
+          <Route path="player/:playerId" element={<Player />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="team" element={<Team />} />
+          <Route path="team-stats" element={<TeamStats />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+        </Routes>
+      </div>
+
     </div>
   )
 }

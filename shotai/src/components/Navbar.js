@@ -32,7 +32,7 @@ const NavBar = () => {
                 </div>
                 <div className="nav-elem">
                     <i className="fas fa-sign-out nav-icon" />
-                    <Link to="#" onClick={handleLogOut}>Log Out</Link>
+                    <Link to="/login" onClick={handleLogOut}>Log Out</Link>
                 </div>
             </div>
         </div>
